@@ -86,7 +86,7 @@ Hadoop follows a `master-slave` architecture and consists of four primary compon
 - **Reduce Phase:** Aggregates the results of the map tasks by combining intermediate outputs into final results.
 
 
-### YARN (Yet Another Resource Negotiator)
+### YARN (Yet Another Resource Negotiator):
 - YARN is the resource management layer of Hadoop, introduced in Hadoop 2.x. 
 - It decouples the task of resource management and job scheduling from MapReduce.
 
@@ -96,6 +96,6 @@ Hadoop follows a `master-slave` architecture and consists of four primary compon
 - **ApplicationMaster:** Each application has its own ApplicationMaster that negotiates resources from the ResourceManager and works with NodeManagers to execute tasks.
 
 
-### Hadoop Common
+### Hadoop Common:
 - This includes the common utilities and libraries that support the other Hadoop modules.
 - These utilities ensure that the different components of Hadoop can work together seamlessly.
