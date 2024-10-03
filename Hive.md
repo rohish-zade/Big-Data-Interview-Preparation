@@ -99,3 +99,41 @@ A hive can operate in two modes based on the number of data nodes in Hadoop.
 - It will be able to handle large amounts of data as well as parallel queries in order to execute them in a timely fashion.
 - By turning on this mode, you can increase the performance of data processing by processing large data sets with better performance.
 
+
+## Types of Tables in Hive
+There are two types of tables in Hive:
+
+### 1. Managed (Internal) Table:
+- Hive owns both the table schema and the data stored in the table.
+- When a managed table is created, Hive stores the table data in a default location in HDFS, typically in /user/hive/warehouse/tablename/ 
+- Hive is responsible for managing the data lifecycle. If you drop a managed table, both the metadata and the data in HDFS are deleted.
+- Use a managed table when Hive should take full control of data management.
+- Example:
+
+   ```sql
+   CREATE TABLE employee (
+       id INT,
+       name STRING,
+       salary FLOAT
+   );
+   ```
+
+### 2. External Table:
+- Hive manages only the table schema (metadata), but the data itself is stored externally (outside Hive’s control).
+- Data for external tables is stored at a location explicitly specified by the user (e.g., an HDFS directory or even other storage like S3).
+- Dropping an external table deletes only the schema from Hive Metastore but does not delete the underlying data in HDFS.
+- Use external tables when data is managed by another system or when you want to keep the data safe after dropping the table.
+- Example:
+
+   ```sql
+   CREATE EXTERNAL TABLE employee_ext (
+       id INT,
+       name STRING,
+       salary FLOAT
+   )
+   LOCATION '/user/external/employee_data/';
+   ```
+
+--------------------------------------
+
+## Interview Questions and Answers on Hive:
