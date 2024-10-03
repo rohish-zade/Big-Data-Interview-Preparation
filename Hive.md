@@ -12,3 +12,4 @@ It converts HQL query into Map-Reduce code.
 - Scalability: Designed to work with large datasets stored in HDFS.
 - Batch Processing: It is optimized for batch processing rather than real-time analytics.
 - Schema on Read: Data is interpreted at query time, not when it is loaded into Hive.
+
