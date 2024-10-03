@@ -73,6 +73,29 @@ Hive is based on Hadoop, which means that it uses the Hadoop Distributed File Sy
 
 
 ### Working with Hive:
+![](https://github.com/rohish-zade/Big-Data-Interview-Preparation/blob/main/images/Working-with-Hive-1536x1018.png)
+
+- Query Submission: The user submits a HiveQL query through the UI (CLI, JDBC/ODBC, Web UI).
+- Query Parsing: The driver parses the HiveQL query and converts it into an Abstract Syntax Tree (AST).
+- Query Compilation: The query compiler converts the AST into an execution plan in the form of DAG (for MapReduce, Tez, or Spark jobs). The compiler also interacts with the Metastore to retrieve schema and data information.
+- Query Optimization: The execution plan is optimized to improve performance (e.g., join reordering, partition pruning, etc.).
+- Job Execution: The execution engine (MapReduce, Tez, or Spark) processes the query by executing tasks on the Hadoop cluster. The data is fetched from HDFS or another storage layer.
+- Result Retrieval: Once the execution is complete, the result is returned to the user through the UI.
 
 
+
+### Different Modes of Hive:
+A hive can operate in two modes based on the number of data nodes in Hadoop.
+- Local mode
+- Map-reduce mode
+
+**When using Local mode:**
+- We can run Hive in pseudo mode if Hadoop is installed under pseudo mode with one data node.
+- In this mode, we can have a data size of up to one machine as long as it is smaller in terms of physical size.
+- Smaller data sets will be processed rapidly on local machines due to the processing speed of small data sets.
+
+**When using Map Reduce mode:**
+- In this type of setup, there are multiple data nodes, and data is distributed across different nodes. We use Hive in this scenario
+- It will be able to handle large amounts of data as well as parallel queries in order to execute them in a timely fashion.
+- By turning on this mode, you can increase the performance of data processing by processing large data sets with better performance.
 
