@@ -232,14 +232,46 @@ You can create a bucketed table by specifying the number of buckets and the colu
 | Sampling         | Cannot directly sample partitions.                | Efficient sampling of specific buckets.            |
 
 
-
-
-
-
-
-
-
-
-
-
 ## Interview Questions and Answers on Hive:
+
+What is Apache Hive?
+- Answer: Apache Hive is a data warehousing solution built on top of Hadoop that allows users to query large datasets using HiveQL, a SQL-like query language. It translates these queries into MapReduce or Tez jobs for execution in the Hadoop ecosystem.
+
+What are the key components of Hive?
+- Answer: Key components of Hive include:
+  - Metastore: Stores metadata about tables, columns, partitions, etc.
+  - Driver: Manages the lifecycle of HiveQL queries.
+  - Compiler: Compiles HiveQL queries into MapReduce jobs.
+  - Execution Engine: Executes the compiled jobs.
+  - HiveQL: The query language used to interact with Hive.
+
+What are the different modes in which Hive can run?
+- Answer: Hive can run in two modes:
+  - **Local Mode:** Executes queries locally for small datasets.
+  - **Distributed Mode:** Executes queries on a Hadoop cluster, processing large datasets in a distributed manner.
+
+What file formats does Hive support?
+- Answer: Hive supports multiple file formats for storing data, including:
+  - `TextFile`: Default format, where each row is a line of text.
+  - `SequenceFile`: Binary key-value pair format.
+  - `RCFile` (Record Columnar File): Columnar storage format.
+  - `ORC` (Optimized Row Columnar): Highly efficient columnar format for Hive.
+  - `Parquet`: Another columnar format that supports nested data structures.
+
+What is the default location where Hive stores its table data?
+- Answer: By default, Hive stores its table data in the HDFS directory /user/hive/warehouse.
+- The location can be changed using the LOCATION clause when creating the table.
+
+What is the difference between static partitioning and dynamic partitioning in Hive?
+- Answer:
+  - `Static Partitioning:` Partition values are specified explicitly in the INSERT query, and data is loaded into those partitions.
+  - `Dynamic Partitioning:` Partition values are automatically derived from the data being inserted, allowing Hive to create partitions dynamically.
+
+How can you optimize Hive queries?
+- Answer: Hive queries can be optimized by:
+  - Partitioning and bucketing large tables.
+  - Using efficient file formats like ORC or Parquet.
+  - Enabling query optimizations like predicate pushdown.
+  - Using vectorized query execution.
+  - Avoiding small files in HDFS to minimize job overhead.
+
