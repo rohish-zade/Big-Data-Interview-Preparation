@@ -162,7 +162,27 @@ Partitioning helps improve query performance by allowing Hive to scan only relev
 - In this example, the table sales is partitioned by two columns: year and region. Hive will store the data in directories such as /year=2021/region=US/.
 
 
-## Advantages of Partitioning:
+### Advantages of Partitioning:
+- `Improved Query Performance:` Queries on partitioned tables scan only the relevant partitions instead of the entire table, reducing I/O and speeding up query execution.
+- `Organized Data Storage:` Partitioning helps organize data by splitting it into logical divisions, making it easier to manage and retrieve.
+- `Efficient Data Pruning:` When querying, Hive applies partition pruning, meaning it automatically skips unnecessary partitions, further enhancing performance.
 
+### Disadvantages of Partitioning:
+- `Too Many Partitions:` Having too many partitions can slow down query planning and execution, as Hive needs to handle a large number of directories.
+- `Small Files Problem:` If each partition contains only a small amount of data, it can lead to a large number of small files in HDFS, which reduces efficiency.
+- `Manual Management:` Data loading into partitions requires careful management, and specifying the correct partition values when inserting or querying data can be error-prone. 
+
+
+### Types of partitioning
+
+**Static Partitioning:**
+- In static partitioning, the partition values are explicitly specified by the user when loading data into the table.
+- The user manually defines the partition value for each data load operation. This is a more controlled method but requires user intervention.
+- static partitionig takes less time while loading the data
+
+**Dynamic Partitioning:**
+-  In dynamic partitioning, partition values are derived dynamically from the data being loaded. 
+- Hive automatically creates partitions based on the column values in the dataset.
+- It takes longer time while loading the data
 
 ## Interview Questions and Answers on Hive:
