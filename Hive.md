@@ -185,4 +185,61 @@ Partitioning helps improve query performance by allowing Hive to scan only relev
 - Hive automatically creates partitions based on the column values in the dataset.
 - It takes longer time while loading the data
 
+
+## Bucketing in Hive
+- Bucketing in Hive is a technique used to further decompose partitioned data into more manageable parts (called buckets) based on the hash value of a column. 
+- It helps optimize query performance, especially for queries involving joins and sampling.
+
+### How Bucketing Works:
+- Bucketing is applied to a table or partition by defining a column as the "bucket column."
+- The hash value of the bucket column is computed, and the data is distributed into a fixed number of buckets based on this value.
+- Hive assigns each record to a bucket based on the result of the hash function modulo the number of buckets.
+- For example, if a table has 4 buckets and the hash function value for a record's column is 7, the record will be placed in bucket (7 % 4) = 3.
+
+
+### Purpose of Bucketing:
+- `Efficiency in Joins:` Bucketing makes join operations more efficient. If two tables are bucketed on the same column, the join can be performed on corresponding buckets, reducing data shuffling.
+- `Improved Query Performance:` Queries that filter or sample data based on bucketed columns can be faster since Hive can directly read the specific buckets instead of scanning the entire table or partition.
+- `Sampling:` Bucketing allows efficient sampling of data for queries by selecting specific buckets rather than the entire table.
+
+
+### Syntax for Bucketing a Table:
+- **Creating a Bucketed Table:** 
+You can create a bucketed table by specifying the number of buckets and the column(s) to be used for bucketing.
+  ```sql
+  CREATE TABLE employee (
+      id INT,
+      name STRING,
+      salary FLOAT
+  )
+  CLUSTERED BY (id) INTO 4 BUCKETS;
+  ```
+  In this example, the employee table is bucketed by the id column into 4 buckets.
+
+- **Setting Properties for Bucketing:** You need to set the following properties for Hive to understand the bucketing configuration:
+  ```sql
+  SET hive.enforce.bucketing = true;
+  ```
+
+
+## Differences Between Partitioning and Bucketing:
+
+| Feature          | Partitioning                                      | Bucketing                                          |
+|------------------|---------------------------------------------------|---------------------------------------------------|
+| Granularity      | Divides data into directories based on partition keys. | Divides data into files based on bucket keys.      |
+| Data Pruning     | Efficient when filtering on partition columns.     | Efficient when filtering on bucketed columns.      |
+| Joins            | No optimization for joins between partitioned tables. | Optimizes joins between bucketed tables.           |
+| Sampling         | Cannot directly sample partitions.                | Efficient sampling of specific buckets.            |
+
+
+
+
+
+
+
+
+
+
+
+
 ## Interview Questions and Answers on Hive:
