@@ -134,6 +134,35 @@ There are two types of tables in Hive:
    LOCATION '/user/external/employee_data/';
    ```
 
---------------------------------------
+
+## Partitioning in Hive
+Partitioning in Hive is a way to divide large tables into smaller, more manageable parts based on the values of one or more columns (known as partition keys).
+Partitioning helps improve query performance by allowing Hive to scan only relevant portions of the data, instead of the entire table.
+
+
+### How it Works:
+- When a table is partitioned, the data is stored in separate directories in HDFS. Each directory corresponds to a specific value of the partition key (or combination of keys if there are multiple partitions).
+- For example, if a table is partitioned by the "year" column, Hive will store the data in subdirectories like /year=2021/, /year=2022/, etc.
+- When querying a partitioned table, Hive will only read data from the relevant partitions, reducing the amount of data scanned.
+
+### Partitioning Levels:
+- Single-Level Partitioning: Data is divided based on a single column. Example: Partitioning by "year."
+- Multi-Level Partitioning: Data is divided based on multiple columns. Example: Partitioning by both "year" and "region."
+
+### Syntax for Partitioning a Table:
+- *Create a Partitioned Table:*
+  ```sql
+  CREATE TABLE sales (
+    product_id INT,
+    amount FLOAT,
+    customer STRING
+  )
+  PARTITIONED BY (year INT, region STRING);
+  ```
+- In this example, the table sales is partitioned by two columns: year and region. Hive will store the data in directories such as /year=2021/region=US/.
+
+
+## Advantages of Partitioning:
+
 
 ## Interview Questions and Answers on Hive:
