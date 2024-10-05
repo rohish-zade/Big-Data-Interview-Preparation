@@ -78,3 +78,66 @@
   ```
 
 ### 3. Permissions and Ownership
+
+- `chmod`: Change file permissions.
+  ```bash
+  chmod 755 filename    # Set read/write/execute permissions for the owner, and read/execute for others
+  chmod u+x filename    # Add execute permission to the file for the owner
+  ```
+
+- `chown`: Change file owner and group
+  ```bash
+  chown user:group filename   # Change ownership of a file
+  ```
+
+
+### 4. Process Management
+
+- `ps`: View running processes.
+  ```bash
+  ps
+  ps -ef    # Detailed process view
+  ```
+
+- `top`: Display real-time system processes.
+  ```bash
+  top
+  ```
+
+- `kill`: Terminate a process by its PID.
+  ```bash
+  kill 1234    # Kill process with PID 1234
+  ```
+
+- `killall`: Terminate processes by name.
+  ```bash
+  killall process_name    # Kill all processes named "process_name"
+  ```
+
+
+### 5. System Information
+
+- `uname`: Show system information.
+  ```bash
+  uname -a    # Display all system information
+  ```
+
+- `df`: Check disk space usage.
+  ```bash
+  df -h    # Show disk usage in human-readable format
+  ```
+
+- `du`: Check directory or file size.
+  ```bash
+  du -h directory_name   # Display the size of a directory
+  ```
+
+- `free`: Display memory usage.
+  ```bash
+  free -h    # Show memory in human-readable format
+  ```
+
+- `uptime`: Show how long the system has been running.
+  ```bash
+  uptime
+  ```
