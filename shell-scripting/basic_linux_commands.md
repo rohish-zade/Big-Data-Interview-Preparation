@@ -49,7 +49,33 @@
   mv filename /path/to/destination   # Move a file
   ```
 
+- `touch`: Create an empty file
+  ```bash
+  touch newfile.txt # create newfile.txt
+  ```
+
+- `find`: Search for files in a directory hierarchy	
+  ```bash
+  find / -name "myfile.txt" # find myfile.txt starting from root
+  ```
+
+- `locate`: Find files by name	
+  ```bash
+  locate file.txt # search for file.txt
+  ```
+
+- file: Determine file type	
+  ```bash
+  file image.png # show type of image.png
+  ```
+
+
 ### 2. File Viewing and Editing
+
+- `echo`: Print text to standard output
+  ```bash
+  echo "Hello World" # print Hello World
+  ```
 
 - `cat`: View the contents of a file.
   ```bash
@@ -75,6 +101,51 @@
 - `nano`: Open a simple text editor.
   ```bash
   nano filename
+  ```
+
+- `grep`: Search for patterns in files	
+  ```bash
+  grep "error" logfile.txt # search for "error" in logfile.txt
+  ```
+
+- `awk`: Pattern scanning and processing language	
+  ```bash
+  awk '{print $1}' file.txt # print the first column from file.txt
+  ```
+
+- `sed`: Stream editor for filtering and transforming text	
+  ```bash
+  sed 's/old/new/g' file.txt # replace old with new in file.txt
+  ```
+
+- `cut`: Remove sections from each line of files	
+  ```bash
+  cut -d':' -f1 /etc/passwd # cut and display first field from /etc/passwd file
+  ```
+
+- `sort`: Sort lines of text files	
+  ```bash
+  sort file.txt # sort lines alphabetically in file.txt
+  ```
+
+- `uniq`: Report or filter out repeated lines	
+  ```bash
+  uniq file.txt # filter out duplicate lines in file.txt
+  ```
+
+- `wc`: Print newline, word, and byte counts for files	
+  ```bash
+  wc -l file.txt # count lines in file.txt
+  ```
+
+- `diff`: Compare files line by line	
+  ```bash
+  diff file1.txt file2.txt # compare file1.txt and file2.txt
+  ```
+
+- `cmp`: Compare two files byte by byte	
+  ```bash
+  cmp file1.txt file2.txt (compare files byte by byte)
   ```
 
 ### 3. Permissions and Ownership
@@ -114,12 +185,42 @@
   killall process_name    # Kill all processes named "process_name"
   ```
 
+- `jobs`: List background jobs	
+  ```bash
+  jobs # list active jobs
+  ```
+
+- `nohup`: Run a command immune to hangups	
+  ```bash
+  nohup script.sh & (run script.sh immune to terminal closing)
+  ```
+
+- `time`: Measure program execution time	
+  ```bash
+  time ./script.sh (measure how long script.sh takes to run)
+  ```
+
 
 ### 5. System Information
 
 - `uname`: Show system information.
   ```bash
   uname -a    # Display all system information
+  ```
+
+- `hostname`: Display or set the system’s hostname	
+  ```bash
+  hostnamectl set-hostname newname # change hostname to newname
+  ```
+
+- `uptime`: Show how long the system has been running.
+  ```bash
+  uptime
+  ```
+
+- `vmstat`:	Report virtual memory statistics	
+  ```bash  
+  vmstat 1 # show virtual memory statistics every second
   ```
 
 - `df`: Check disk space usage.
@@ -137,10 +238,6 @@
   free -h    # Show memory in human-readable format
   ```
 
-- `uptime`: Show how long the system has been running.
-  ```bash
-  uptime
-  ```
 
 ### 6. Networking
 
@@ -198,6 +295,11 @@
 - `whoami`: Display the current logged-in user.
   ```bash
   whoami
+  ```
+
+- `id`:	Display user and group IDs	
+  ```bash
+  id username # show user and group IDs for username
   ```
 
 - `sudo`: Run a command with superuser privileges
