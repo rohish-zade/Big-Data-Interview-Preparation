@@ -141,3 +141,77 @@
   ```bash
   uptime
   ```
+
+### 6. Networking
+
+- `ifconfig`: View or configure network interfaces.
+  ```bash
+  ifconfig
+  # ifconfig: Unix-like systems, more powerful for managing network interfaces.
+  # ipconfig: Windows systems, mainly for viewing and renewing IP information for troubleshooting.
+  ```
+
+- `ping`: Test network connectivity.
+  ```bash
+  ping google.com    # Send packets to a host to check connectivity
+  ```
+
+- `curl`: Transfer data from or to a server.
+  ```bash
+  curl http://example.com
+  ```
+
+- `wget`: Download files from the web.
+  ```bash
+  wget http://example.com/file
+  ```
+
+### 7. Archiving and Compression
+
+- `tar`: Archive files and directories.
+  ```bash
+  tar -cvf archive.tar directory    # Create an archive of a directory
+  tar -xvf archive.tar              # Extract an archive
+  ```
+
+- `gzip`: Compress files.
+  ```bash
+  gzip filename    # Compress a file
+  gunzip filename.gz    # Decompress a file
+  ```
+
+  **difference between Archiving and Compressing:**
+
+  | Feature             | Archiving                                          |   Compressing                                         |
+  |---------------------|---------------------------------------------------|  ----------------------------------------------------|
+  | **Definition**       | Combines multiple files into a single file without reducing size. |   Reduces the size of one or more files by encoding data more efficiently. |
+  | **Purpose**          | Organize and store multiple files in one place.   | Save disk space   or reduce transfer time by making files smaller.          |
+  | **File Structure**   | Maintains the original structure of the files.    | Changes the   internal structure to reduce file size. |
+  | **Tools**            | `tar`, `cpio`, `7-zip` (for archiving)            | `gzip`, `bzip2`,   `zip`, `7z`, `xz`                 |
+  | **Formats**          | `.tar`, `.iso`                                    | `.zip`, `.gz`, `.  bz2`, `.7z`, `.xz`                |
+  | **Combination**      | Often combined with compression (e.g., `.tar.gz`).| Compression is   typically done after archiving.     |
+  | **Use Case**         | Backup or group files for easier management or distribution. | Save   disk space or speed up file transfer.         |
+  | **Restoring Files**  | Files are extracted while maintaining structure.  | Files are   decompressed and restored to original size. |
+
+
+### 8. User and Group Management
+- `whoami`: Display the current logged-in user.
+  ```bash
+  whoami
+  ```
+
+- `sudo`: Run a command with superuser privileges
+  ```bash
+  sudo command    # Run a command as the superuser
+  ```
+
+- `useradd`: Add a new user.
+  ```bash
+  sudo useradd username
+  ```
+
+- `passwd` username
+  ```bash
+  passwd username
+  ```
+
