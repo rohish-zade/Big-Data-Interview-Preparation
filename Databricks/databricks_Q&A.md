@@ -22,4 +22,23 @@ Databricks is a versatile platform used across industries for `big data processi
 - Lakehouse Architecture: Combining data lake and warehouse features.
 - Scientific Research: Analyzing large datasets for research applications.
 
-### 3. Explain the architecture of Databricks. How do clusters work within Databricks?
+### 3. Databricks Architecture (Data Plane and Control Plane)
+
+Databricks operates out of a control plane and a compute plane.
+
+**Control Plane:**
+- It is located in the Databricks account which contains backend services managed by Databricks.
+- `User Interface:` Hosts the Databricks web application, where users access the Databricks Workspace, create notebooks, manage clusters, and monitor jobs.
+- `Job Scheduling and Management:` Manages job scheduling and orchestration, ensuring that jobs are triggered on the compute plane as per configuration.
+- `Cluster Management:` Manages the lifecycle of clusters, including creation, auto-scaling, and termination, but it does not handle the actual data processing tasks.
+- `Metadata and Authentication:` Manages metadata (e.g., notebook contents, cluster configurations) and handles user authentication, role-based access control (RBAC), and permissions for secure access to resources.
+- The Control Plane does not access or process customer data directly; instead, it manages the environment and resources that do.
+
+**Compute Plane:**
+- The compute plane is where your data is processed. 
+- There are two types of compute planes depending on the compute that you are using.
+  - For serverless compute, the serverless compute resources run in a serverless compute plane in your client Databricks account.
+  - For classic client Databricks compute, the compute resources are in your client subscription in what is called the classic compute plane. This refers to the network in your client subscription and its resources.
+- Each Azure Databricks workspace has an associated storage account known as the workspace storage account. The workspace storage account is in your Azure subscription.
+
+  ![](https://github.com/rohish-zade/Big-Data-Interview-Preparation/blob/main/images/databricks_architecture.png)
