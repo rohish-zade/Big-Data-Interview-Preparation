@@ -192,3 +192,69 @@ Key Points:
 
 
 ### 14. What is Multi-hop/Medallion Architecture?
+The Multi-hop (or Medallion) Architecture is a design pattern for building scalable, maintainable, and efficient data pipelines in a data lakehouse environment, typically using tools like Databricks. 
+
+This architecture separates data processing into multiple stages or layers, often referred to as bronze, silver, and gold layers, each serving a specific purpose.
+ 
+  ![]()
+
+**Bronze Layer (Raw Data):**
+- This layer stores raw, untransformed data ingested directly from source systems (e.g., raw logs, transactional data, IoT data). It is typically stored in its most granular form without much processing.
+- Typically just a raw copy of ingested data.
+- This layer serves as a durable, source-of-truth repository.
+- It may contain errors, duplicates, or incomplete data. This layer is used primarily for storage and later processing.
+
+**Silver Layer (Cleaned or Transformed Data):**
+- This layer contains data that has undergone cleansing and transformation. 
+- The raw data from the bronze layer is cleaned, enriched, and integrated to make it more useful for analysis.
+- Data is typically aggregated or enriched for analysis.
+- Serves as a reliable source for reporting or machine learning applications
+- Data transformation, data enrichment, filtering, and joining datasets to create a more refined, intermediate form of data for downstream analysis.
+- Eliminates duplicate records
+
+**Gold Layer (Aggregated or Business-Level Data):**
+- The gold layer contains data that is ready for business intelligence (BI) or analytical purposes. 
+- This data is often `aggregated`, `summarized`, or `structured` in a way that directly supports decision-making and reporting.
+
+**Benefits of Multi-Hop Architecture:**
+- `Scalability`: The architecture allows for handling large datasets efficiently by breaking down the processing into smaller, manageable stages.
+- `Data Quality:` By separating raw data from processed data, data quality improves with each layer. This design also supports incremental processing and deduplication.
+- `Modularity`: It allows for flexible transformations at each layer, making it easier to modify and update pipeline logic without affecting other layers.
+- `Performance Optimization`: Each layer can be optimized independently for different types of workloads (e.g., batch processing for bronze, fast querying for gold).
+
+
+### 14. Workflows in databricks?
+In Databricks, Workflows are a set of tasks that are executed in a specified order to automate data processing, orchestration, and job management.
+
+They allow data engineers to build and manage complex data pipelines, combining batch jobs, streaming jobs, and other automated tasks.
+
+**Jobs in Databricks:**
+- Jobs in Databricks are used to automate and schedule the execution of notebooks, Python scripts, JARs, or other code. 
+- You can define the parameters and clusters to run these tasks on, enabling a repeatable, automated process for data pipelines.
+
+**Delta Live Tables (DLT):**
+- Delta Live Tables is a declarative framework for building `reliable`, `maintainable`, and `testable` data processing pipelines. 
+- You define the transformations to perform on your data and Delta Live Tables manages `task orchestration`, `cluster management,` `monitoring`, `data quality`, and `error handling`.
+
+
+### 15. Unity Catalog in Databricks?
+Unity Catalog is a unified governance solution in Databricks that centralizes and simplifies data management across various workspaces and environments.
+
+It provides a unified interface for managing all the data assets (`tables`, `views`, `schemas`, etc.) in Databricks and integrates with Databricks' Metastore, which is a service that manages metadata for your data.
+
+  ![](https://github.com/rohish-zade/Big-Data-Interview-Preparation/blob/main/images/unity_catalog.png)
+
+Key Concepts in Unity Catalog:
+
+**Metastore:**
+- The Databricks Metastore is a centralized repository that stores metadata for your data assets, such as tables, schemas, and views. 
+- It enables users to discover and manage their datasets across different workspaces.
+
+**Catalog:**
+- A Catalog is a container that holds one or more databases (schemas). 
+- Unity Catalog allows you to create and manage catalogs to organize your data assets.
+- Example: You can create different catalogs for various business domains (e.g., “sales_catalog” and “marketing_catalog”) to logically segregate the datasets across departments.
+
+**Database (Schema):**
+- A Database (or Schema) is a logical grouping of related tables, views, and other objects.
+- Further Database contains `tables`, `view` and `functions`
