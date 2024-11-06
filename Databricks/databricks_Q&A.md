@@ -169,3 +169,26 @@ Key Points:
 **Key Differences:**
 - `VACUUM`: Cleans up old and unnecessary files to free up storage space.
 - `OPTIMIZE`: Combines small files into larger ones for improved performance, especially for queries that involve specific columns.
+
+### 14. What is delta_log in delta table?
+- In Delta Lake, the `delta_log` (also known as the transaction log) is a critical component that tracks all changes made to a Delta Table.
+- It resides in a folder named `_delta_log` within the Delta Table's directory and stores information about every transaction, including metadata and operations like inserts, updates, deletes, and schema changes.
+- Inside the _delta_log folder of a Delta table, you will find the following types of files:
+  - `JSON files:` 
+    - These files contain the transaction log entries that record changes to the Delta table. Each JSON file represents a single transaction (write operation). They include details like: 
+      - The type of operation (e.g., addFile, removeFile, metaData, txnCommit)
+      - File paths, partition information, and data file metadata
+      - Timestamps and version numbers of the transaction
+    - he files are named sequentially as 00000000000000000001.json, 00000000000000000002.json, and so on.
+  - `Checkpoint files` (_delta_log/*.checkpoint.parquet):
+    - These are Parquet files that contain a snapshot of the state of the Delta table at a particular point in time.
+    - Checkpoints are created periodically to optimize reading the transaction log and avoid reading all the JSON log files for every query. 
+    - A checkpoint file contains the entire transaction history up to that point, stored in a more compact and efficient format (Parquet).
+    - for every 10 json transaction files one checkpoint file will be created.
+  - `CRC file` (Cyclic Redundancy Check file)
+    - CRC files are used to store checksums for the corresponding JSON or checkpoint files in the Delta log. 
+    - They help in validating that the log files have not been corrupted and can be read correctly.
+    - When Delta Lake reads the transaction log files, it verifies the integrity of the log files by comparing the checksums stored in the .crc files with the actual content of the log files.
+
+
+### 14. What is Multi-hop/Medallion Architecture?
