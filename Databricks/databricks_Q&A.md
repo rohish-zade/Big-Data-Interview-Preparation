@@ -196,7 +196,7 @@ The Multi-hop (or Medallion) Architecture is a design pattern for building scala
 
 This architecture separates data processing into multiple stages or layers, often referred to as bronze, silver, and gold layers, each serving a specific purpose.
  
-  ![]()
+  ![](https://github.com/rohish-zade/Big-Data-Interview-Preparation/blob/main/images/building-data-pipelines-with-delta-lake-120823.png)
 
 **Bronze Layer (Raw Data):**
 - This layer stores raw, untransformed data ingested directly from source systems (e.g., raw logs, transactional data, IoT data). It is typically stored in its most granular form without much processing.
