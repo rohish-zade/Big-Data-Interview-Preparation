@@ -258,3 +258,42 @@ Key Concepts in Unity Catalog:
 **Database (Schema):**
 - A Database (or Schema) is a logical grouping of related tables, views, and other objects.
 - Further Database contains `tables`, `view` and `functions`
+
+
+### 16. Widgets in Databricks
+Widgets in Databricks are UI elements that allow users to parameterize notebooks, making them more interactive and versatile for different tasks or users.
+
+Databricks widgets are best for:
+- Building a notebook or dashboard that is re-executed with different parameters.
+- Quickly exploring results of a single query with different parameters.
+
+**Databricks widget types**
+
+There are 4 types of widgets:
+
+**Text:** 
+- Input a value in a text box.
+- Example: Create a text widget to manually specify a table name:
+  ```python
+  dbutils.widgets.text("table", "")
+  ```
+
+**Dropdown:** 
+- Select a value from a list of provided values.
+- Example: Create a dropdown widget of all databases in the current catalog:
+  ```python
+  dbutils.widgets.dropdown("database", "default", [database[0] for database in spark.catalog.listDatabases()])
+  ```
+**Combobox:**
+- Combination of text and dropdown. Select a value from a provided list or input one in the text box.
+- Example: Creating a combobox widget with default and available options
+  ```python
+  dbutils.widgets.combobox("country", "USA", ["USA", "Canada", "Mexico", "UK"], "Select or Enter Country")
+  ```
+
+**Multiselect:** 
+- Select one or more values from a list of provided values.
+- Example: Creating a multiselect widget with options
+  ```python
+  dbutils.widgets.multiselect("regions", "US", ["US", "EU", "APAC", "LATAM"], "Select Regions")
+  ```
