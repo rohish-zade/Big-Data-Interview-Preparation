@@ -297,3 +297,13 @@ There are 4 types of widgets:
   ```python
   dbutils.widgets.multiselect("regions", "US", ["US", "EU", "APAC", "LATAM"], "Select Regions")
   ```
+
+### 17. What is Mount databricks?
+- In Databricks, mounting refers to the process of making an external storage system (such as an `Azure Data Lake`, `AWS S3`, or `Google Cloud Storage`) accessible within Databricks File System (DBFS).
+- By mounting the external storage, you can read and write data from and to it just like you would with local files on Databricks.
+- You can mount the storage using the Databricks Utilities (dbutils.fs.mount) and provide the necessary parameters like the storage URI and credentials.
+
+**Why Use Mounting?**
+- `Convenience`: Once mounted, accessing the external storage is just like working with local files, simplifying the code.
+- `Security`: You don't need to keep credentials in your code. Credentials are stored securely within the configuration.
+- `Performance`: It reduces the overhead of dealing with direct authentication or complex paths every time you interact with external data.
