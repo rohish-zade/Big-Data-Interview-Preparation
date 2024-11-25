@@ -336,4 +336,52 @@ There are 4 types of widgets:
 - You can use the Databricks REST API to programmatically trigger a notebook job. This involves creating a job for the notebook you want to run and calling it via the API from another notebook.
 
 
-### 19. 
+### 19. What methods do you use to access a variable from one notebook in another?
+To access a variable from one notebook in another notebook in Databricks, you can use the following methods:
+
+**1. Using dbutils.notebook.run() and Returning Values**
+- With `dbutils.notebook.run()`, you can pass parameters to the invoked notebook and retrieve the returned result as a string. 
+- You can serialize variables to JSON or other formats if you need to return complex data structures.
+
+**2.Using %run Magic Command:**
+- The `%run` command includes and executes the code of the specified notebook as if it were part of the current notebook, which allows you to directly access the variables, functions, and classes defined in the included notebook.
+
+
+### 20. How do you exit a notebook while returning output data in Databricks?
+- In Databricks, to exit a notebook while returning output data to the calling notebook, you can use the `dbutils.notebook.exit()` function.
+- This allows you to pass a result back to the notebook that invoked it using `dbutils.notebook.run().`
+
+
+### 21. Can you explain the process of creating internal and external tables in Databricks?
+
+**Internal (Managed) Tables:**
+- An internal table, also known as a managed table, is stored entirely within the Databricks-managed storage (such as DBFS or a managed Delta Lake).
+- atabricks manages both the data and the metadata, meaning if you drop an internal table, the underlying data files are also deleted.
+- Process to Create an Internal Table:
+  ```sql
+  CREATE TABLE table_name (
+    column1 DATA_TYPE,
+    column2 DATA_TYPE,
+    ...
+  )
+  USING format
+  OPTIONS (path "dbfs:/user/hive/warehouse/table_name")  -- Optional
+  ```
+  - `USING`: Specifies the storage format (e.g., delta, parquet, csv).
+  - `OPTIONS` (optional): If you don’t specify a path, Databricks will store the data in its default location in DBFS (`/user/hive/warehouse/`).
+
+
+**2. External Tables:**
+- An external table allows you to create a table in Databricks that points to data stored outside the Databricks-managed storage (for instance, data in an `Azure Data Lake`, `S3`, or external `DBFS` location).
+- You manage the storage location, so dropping an external table in Databricks will only remove the table metadata; the actual data remains intact in its original location.
+- Process to Create an External Table:
+  ```sql
+  CREATE TABLE table_name (
+      column1 DATA_TYPE,
+      column2 DATA_TYPE,
+      ...
+  )
+  USING format
+  LOCATION 'external_path';
+  ```
+- `LOCATION`: Specifies the exact storage path where the external data resides (e.g., s3://bucket-name/path, abfss://path for Azure, or a custom path on DBFS).
