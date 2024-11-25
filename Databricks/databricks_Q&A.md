@@ -307,3 +307,33 @@ There are 4 types of widgets:
 - `Convenience`: Once mounted, accessing the external storage is just like working with local files, simplifying the code.
 - `Security`: You don't need to keep credentials in your code. Credentials are stored securely within the configuration.
 - `Performance`: It reduces the overhead of dealing with direct authentication or complex paths every time you interact with external data.
+
+---------------------------
+
+<!-- Deloitte / EY 𝑷𝒚𝒔𝒑𝒂𝒓𝒌 𝒂𝒏𝒅 𝑫𝒂𝒕𝒂𝒃𝒓𝒊𝒄𝒌𝒔 𝒊𝒏𝒕𝒆𝒓𝒗𝒊𝒆𝒘 𝒒𝒖𝒆𝒔𝒕𝒊𝒐𝒏𝒔 𝒇𝒐𝒓 𝑫𝒂𝒕𝒂 𝑬𝒏𝒈𝒊𝒏𝒆𝒆𝒓𝒔 -->
+
+### 18. How do you invoke one notebook from another in Databricks?
+
+**using dbutils.notebook.run():**
+- In Databricks, you can invoke one notebook from another by using the `dbutils.notebook.run()` command.
+- Syntax:
+  ```python
+  dbutils.notebook.run("<notebook_path>", timeout_seconds, arguments)
+  ```
+  - `<notebook_path>:` The path of the notebook you want to invoke (e.g., /Shared/MyNotebook).
+  - `timeout_seconds:` The maximum time (in seconds) allowed for the notebook to run before timing out.
+  - `arguments:` A dictionary of arguments to pass to the target notebook. This is optional and used when the invoked notebook has parameters.
+
+**Using %run Magic Command:**
+- The `%run` magic command allows you to include and run the code from another notebook as if it were part of the current notebook. 
+- This method is useful for importing functions, classes, or variables defined in another notebook, making them available in the current notebook’s scope.
+- Syntax: `%run /path/to/another_notebook`
+- Example: %run /Shared/HelperFunctions
+- `Pros`: Variables, functions, and classes defined in the invoked notebook become accessible in the current notebook.
+- `Cons`: %run does not allow parameter passing. The execution of the included notebook cannot be timed out.
+
+**Using REST API to Trigger Notebooks:**
+- You can use the Databricks REST API to programmatically trigger a notebook job. This involves creating a job for the notebook you want to run and calling it via the API from another notebook.
+
+
+### 19. 
