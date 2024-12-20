@@ -13,7 +13,8 @@ processing of large data sets.
 
 **HDFS:** 
 - HDFS (Hadoop Distributed File System) is the storage unit of Hadoop. 
-- It is responsible for storing different kinds of data as blocks in a distributed environment.- It follows master and slave topology.
+- It is responsible for storing different kinds of data as blocks in a distributed environment.
+- It follows master and slave topology.
 - Components of HDFS are `NameNode` and `DataNode`.
 
 **MapReduce:**
@@ -31,7 +32,7 @@ processing of large data sets.
 - **Fault Tolerance:** Data is replicated across nodes, ensuring availability even during hardware failures.
 - **Parallel Processing:** It processes large datasets in parallel, reducing computation time.
 - **Data Flexibility:** Hadoop supports structured, semi-structured, and unstructured data.
-Open-Source Ecosystem: A free and evolving ecosystem with a wide range of tools for big data processing.
+- **Open-Source Ecosystem:** A free and evolving ecosystem with a wide range of tools for big data processing.
 - **Data Locality:** It processes data locally on the nodes where it's stored, enhancing efficiency.
 
 
