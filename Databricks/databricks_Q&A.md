@@ -99,7 +99,7 @@ We can deploy the databricks mainly in 3 clouds that is Azure, AWS and GCP.
 
 ### 9. What is Repos in databricks?
 - Databricks Repos is a feature in Databricks that provides `Git integration` directly within the Databricks workspace.
-- t enables users to version control notebooks, Python scripts, and other code files by connecting with Git repositories (like `GitHub`, `GitLab`, `Bitbucket`, or `Azure DevOps`), promoting collaborative development, and allowing efficient code management.
+- It enables users to version control notebooks, Python scripts, and other code files by connecting with Git repositories (like `GitHub`, `GitLab`, `Bitbucket`, or `Azure DevOps`), promoting collaborative development, and allowing efficient code management.
 
 ### 10. What is Delta Lake in databricks?
 - Delta Lake is an `open-source storage layer` provided by Databricks, built on top of Apache Spark.
@@ -109,7 +109,7 @@ We can deploy the databricks mainly in 3 clouds that is Azure, AWS and GCP.
 ### 11. What is Data Lakehouse in databricks?
 - A Data Lakehouse in Databricks is an architectural approach that combines the best features of `data lakes` and `data warehouses`.
 - The lakehouse model allows organizations to manage and analyze vast amounts of structured and unstructured data in a single platform, bridging the gap between `analytics` and `big data processing`.
-- Featues or benefits of lakehouse:
+- Features or benefits of lakehouse:
   - `Unified Data Storage:` Data lakehouses store both raw (unstructured) and processed (structured and semi-structured) data in a single repository, often using cloud-based storage like Azure Data Lake Storage (ADLS) in Databricks.
   - `Support for Multiple Workloads:` Databricks Lakehouse allows different types of data processing on a single platform, from ETL (Extract, Transform, Load) and batch processing to streaming and interactive analytics
   - `Delta Lake Format: `The Delta Lake technology, integral to Databricks, enables ACID (Atomicity, Consistency, Isolation, Durability) transactions, schema enforcement, and version control.
@@ -122,11 +122,11 @@ We can deploy the databricks mainly in 3 clouds that is Azure, AWS and GCP.
 Delta Tables are a core component of Delta Lake in Databricks and bring various features that enhance the `reliability`, `performance`, and `manageability` of data in a data lake environment.
 - `ACID Transactions`: Ensures data reliability by supporting atomic, consistent, isolated, and durable operations.
 - `Time Travel (Data Versioning)`: Allows querying and reverting to historical data versions at any point in time.
-- S`chema Enforcement:` Enforces a schema to prevent corrupt or inconsistent data from being written to the table.
+- `Schema Enforcement:` Enforces a schema to prevent corrupt or inconsistent data from being written to the table.
 - `Schema Evolution:` Supports automatic schema changes (e.g., adding new columns) without affecting existing data.
 - `Upserts, Deletes, and Merges:` Enables efficient updates, deletions, and upserts for handling slowly changing dimensions.
 - `Data Skipping and Z-Ordering:` Optimizes query performance by skipping irrelevant data and sorting for efficient data access.
--` Unified Batch and Streaming Support`: Allows seamless integration of batch and real-time streaming data in the same table.
+- `Unified Batch and Streaming Support`: Allows seamless integration of batch and real-time streaming data in the same table.
 - `Built-In Data Quality Features:` 
   - Delta Tables offer vacuuming to remove old data files that are no longer needed, as well as support for data compaction and `OPTIMIZE` commands to reduce storage and improve read performance.
   - These maintenance features allow me to manage storage efficiently and ensure data quality without excessive manual intervention, particularly useful in production environments where performance is critical.
@@ -180,7 +180,7 @@ Key Points:
       - The type of operation (e.g., addFile, removeFile, metaData, txnCommit)
       - File paths, partition information, and data file metadata
       - Timestamps and version numbers of the transaction
-    - he files are named sequentially as 00000000000000000001.json, 00000000000000000002.json, and so on.
+    - The files are named sequentially as 00000000000000000001.json, 00000000000000000002.json, and so on.
   - `Checkpoint files` (_delta_log/*.checkpoint.parquet):
     - These are Parquet files that contain a snapshot of the state of the Delta table at a particular point in time.
     - Checkpoints are created periodically to optimize reading the transaction log and avoid reading all the JSON log files for every query. 
@@ -375,7 +375,7 @@ To access a variable from one notebook in another notebook in Databricks, you ca
 
 **Internal (Managed) Tables:**
 - An internal table, also known as a managed table, is stored entirely within the Databricks-managed storage (such as DBFS or a managed Delta Lake).
-- atabricks manages both the data and the metadata, meaning if you drop an internal table, the underlying data files are also deleted.
+- Databricks manages both the data and the metadata, meaning if you drop an internal table, the underlying data files are also deleted.
 - Process to Create an Internal Table:
   ```sql
   CREATE TABLE table_name (
