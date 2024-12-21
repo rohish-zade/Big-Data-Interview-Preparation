@@ -80,7 +80,8 @@ In Databricks, there are primarily three types of clusters, each serving differe
 ### 6. What is DBU?
 - When we use Databricks to run our ETL pipelines or train ML models, we consume computation power that gets measured by a Databricks Unit (or DBU for short).
 - A DBU (Databricks Unit) is a unit of processing capability per hour used to measure and bill for computational resources in Databricks.
-- It represents the processing power consumed by running workloads on Databricks clusters.- DBUs are calculated based on factors like cluster type, instance type, and workload, and they are a core component in Databricks’ pricing model.
+- It represents the processing power consumed by running workloads on Databricks clusters.
+- DBUs are calculated based on factors like cluster type, instance type, and workload, and they are a core component in Databricks’ pricing model.
 
 
 ### 7. Databricks Deployment
