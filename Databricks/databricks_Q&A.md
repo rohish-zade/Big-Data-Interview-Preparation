@@ -304,11 +304,29 @@ There are 4 types of widgets:
 - By mounting the external storage, you can read and write data from and to it just like you would with local files on Databricks.
 - You can mount the storage using the Databricks Utilities (dbutils.fs.mount) and provide the necessary parameters like the storage URI and credentials.
 
+**Creating a Mount:**
+You can create a mount using the `dbutils.fs.mount()` function. 
+- Example for Azure Data Lake:
+  ```python
+  dbutils.fs.mount(
+  source = "wasbs://<container>@<storage-account-name>.blob.core.windows.net/",
+  mount_point = "/mnt/<mount-name>",
+  extra_configs = {"<conf-key>": "<conf-value>"}
+  )
+  ```
+
 **Why Use Mounting?**
 - `Convenience`: Once mounted, accessing the external storage is just like working with local files, simplifying the code.
 - `Security`: You don't need to keep credentials in your code. Credentials are stored securely within the configuration.
 - `Performance`: It reduces the overhead of dealing with direct authentication or complex paths every time you interact with external data.
 
+
+**Advantages of Mounts:**
+- `Simplified Access:` Allows easy and consistent access to external storage without needing to specify full paths or credentials repeatedly.
+- `Access Control:` Mount points can be configured with appropriate access permissions, ensuring data security.
+- `Convenience:` Data can be accessed and managed like local files in DBFS, improving productivity.
+- `Cross-Cluster Persistence:` Once mounted, the storage is accessible across all clusters in the Databricks workspace, eliminating the need to reconfigure storage for each cluster.
+- `Improved Organization:` Mounts provide a structured way to organize and access external data sources.
 ---------------------------
 
 <!-- Deloitte / EY 𝑷𝒚𝒔𝒑𝒂𝒓𝒌 𝒂𝒏𝒅 𝑫𝒂𝒕𝒂𝒃𝒓𝒊𝒄𝒌𝒔 𝒊𝒏𝒕𝒆𝒓𝒗𝒊𝒆𝒘 𝒒𝒖𝒆𝒔𝒕𝒊𝒐𝒏𝒔 𝒇𝒐𝒓 𝑫𝒂𝒕𝒂 𝑬𝒏𝒈𝒊𝒏𝒆𝒆𝒓𝒔 -->
