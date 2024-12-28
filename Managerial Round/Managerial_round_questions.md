@@ -70,7 +70,7 @@ A significant challenge I faced was scheduling the pipelines to run only on busi
 
 To solve this, we created a CSV file containing a list of holiday dates. Before triggering the pipelines, I developed a script that checked the current date against the holiday list. If the day was a holiday, the script would stop the pipeline execution and send an email notification. If it was a business day, the pipeline would proceed as usual.
 
-This solution ensured that data was processed only on valid business days and helped maintain smooth operations during holiday periods/.
+This solution ensured that data was processed only on valid business days and helped maintain smooth operations during holiday periods.
 
 ### 7. How do you prioritize tasks and manage deadlines in a fast-paced environment, especially when working on multiple data projects simultaneously?
 
