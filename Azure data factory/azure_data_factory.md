@@ -193,7 +193,65 @@ Now create a pipeline with having following activity:
 - Pull the data between these two dates and copy using copy activity.
 - Update the highwatermark table/file with date from step 2.
 
-### 30.
+### 30. Assume that there is a business requirement. An external application drops the file in the blob storage account. Your pipeline has to pick this file and push the data into the Azure SQL database. How would you design the solution?
 
-### 31.
+Create a pipeline with a copy activity to move the data from blob to Azure SQL DB. However, the key here is the triggering of the pipeline. We need to use the storage event-based trigger to execute the pipeline as soon as the file arrives.
 
+### 31. Assume that there is a business requirement. Your pipeline is copying the data from source to destination. However, you want to receive an email notification whenever this copy activity fails. How would you design this solution?
+
+- Create a pipeline with a copy activity.
+- Create a logic app which will have trigger as REST API.
+- Logic app will have email as action. It will send an email to defined name, subject, and message.
+- Now in the pipeline, add one web activity which will call the logic app as REST API.
+- Connect this web activity to copy activity for failure scenario.
+
+### 33. Assume that you are developing a pipeline. Your pipeline is copying the data from source to destination (ADLS). This pipeline runs on a daily basis. You have to create a folder hierarchy (year/month/day) and store files inside it. How would you design this solution?
+
+We will use the dynamic content for folder path. Using the function like **formatDateTime(utcnow(), 'yyyy')** gives you year then concatenate it with month and day.
+  ```sql
+  @concat(formatDateTime(utcnow(), 'yyyy'), '/', formatDateTime(utcnow(), 'MM'), '/',   formatDateTime(utcnow(), 'dd'))
+  ```
+
+### 34. Assume that you are developing a pipeline. Your pipeline is copying the data from REST api source to destination (ADLS). This pipeline runs on a daily basis. Your rest endpoints are dynamic as: https://www.rohishzade.com/dd-mm-yy. How would you design this solution?
+- Create a pipeline.
+- Add copy activity
+- Add a linked service as REST type by giving the base URL:
+  - https://www.rohishzade.com/
+- Add a REST type of dataset. There under relative URL column put the dynamic content like:
+  - ```sql 
+    @concat(formatDateTime(utcnow(), 'dd'), '-', formatDateTime(utcnow(), 'MM'), '-', formatDateTime(utcnow(), 'yyyy'))
+    ```
+### 35. Assume that there multiple files in ADLS folder. All of these files have file name corresponding to a table in DB? Example customer.txt, product.txt You have to copy the data from these files to respective tables automatically. How would you design the solution?
+- Create a pipeline.
+- Put `GetMetaData` activity to get list of all files within the folder.
+- Use forEach loop to iterate upon it.
+- Inside foreach add the copy activity to copy the data from ADLS to DB.
+- Here keep the DB dataset parameterized to pass the table name as the filename.
+- This will make the entire process dynamic. 
+
+### 36. In which scenario you will going to use the linked self hosted IR?
+Linked Self-hosted IR are the integration runtime linked from external or different data factory account to current ADF account.
+
+Assume, there is one separate team who is pulling the data from some on-prem db and for that they have already created self-hosted IR by setting up infra.
+
+Now rather setting new infra, you can refer the same.
+
+### 37. Assume that you copying the data from file to table using ADF? Now there are few rows not matched with table schema. Hence due to that copy activity is failing. How you deal with such scenarios?
+
+In the copy activity we can enable `logging`. There we can set `skipping unmatched rows` and continue. We can log all those skipped rows to a file in adls as well.
+
+### 38. Assume that you copying the data from file to table using ADF? It is working very slow. What you can do improve the performance?
+
+In the copy activity setting tab we have DIU (`data integration unit`). By default it is auto. That means it will auto scale starting from 4. To improve the performance we can assign some high value since the start. This could speed up the work.
+
+We can also use the staging concept in case of certain data sources as well.
+
+### 39.  What are the scenarios where copy activity's mapping configuration would be useful?
+
+In the copy activity mapping tab we can set mapping between the source to destination. Now assume that in source column name is 'Cost' and in destination column name is 'Price'.
+
+Then you can exclusively define which source column mapped to destination column.
+
+### 40. Assume that your pipeline got failed at second activity. To avoid data inconsistency you have wanted to rerun the pipeline from failed activity. Can we do this? Give reason.
+
+Yes we can do it. Go to Monitor -> search pipeline -> open -> run from failed activity.
