@@ -1,4 +1,4 @@
-## ETL Challenge
+## Data Modeling Challenge
 
 ### Which statement about Primary Keys & Foreign Keys is TRUE?
 - A table can have multiple primary keys
