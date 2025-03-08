@@ -1,6 +1,7 @@
 ## ETL Challenge: Streaming Data Processing
 
 ### Which tool is commonly used for streaming data processing in ETL?
+
 - A) Apache Kafka
 - B) Hadoop
 - C) Snowflake

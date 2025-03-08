@@ -1,7 +1,6 @@
 ## SQL Challenge: Common table Expression(Recursive CTE)
 
 ### What is the purpose of a recursive CTE in SQL?
-
 - A) To create temporary tables
 - B) To generate hierarchical queries
 - C) To replace indexes

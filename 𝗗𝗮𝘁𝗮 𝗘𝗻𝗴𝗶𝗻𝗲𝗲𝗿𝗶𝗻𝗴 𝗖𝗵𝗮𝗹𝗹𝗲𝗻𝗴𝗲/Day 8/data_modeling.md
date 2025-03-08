@@ -1,7 +1,6 @@
 ## Data Modeling Challenge: Data Normalization
 
 ### Which normal form removes partial dependencies on a primary key?
-
 - A) 1NF
 - B) 2NF
 - C) 3NF

@@ -1,7 +1,6 @@
 ## Python Challenge: Generators
 
 ### What keyword is used in Python to create a generator?
-
 - A) yield
 - B) return
 - C) def
