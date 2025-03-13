@@ -1,7 +1,10 @@
-# Level 1 Interview Questions
+# Azure Data Factory (ADF)
 
 ### 1. What is Azure Data Factory (ADF)?
-Azure Data Factory is a cloud-based ETL service that allows you to create data-driven workflows for orchestrating and automating data movement and data transformation.
+- Azure Data Factory is a cloud-based ETL service that allows you to create data-driven workflows for orchestrating and automating data movement and data transformation.
+- Azure Data Factory is a cloud-based data integration service to compose data storage, movement, and processing services into automated data pipelines.
+- Azure Data Factory is a data ingestion and transformation service that allows you to load raw data from over 70 different on-premises or cloud sources. The ingested data can be cleaned, transformed, restructured, and loaded back into a data warehouse.
+
 
 #### Common Use Cases for ADF:
 - **ETL and ELT Pipelines:** Extracting data from various sources, transforming it, and loading it into data lakes or warehouses.
@@ -13,16 +16,83 @@ Azure Data Factory is a cloud-based ETL service that allows you to create data-d
 #### Why Use Azure Data Factory?
 Azure Data Factory simplifies the process of managing complex data workflows and eliminates the need for infrastructure management. Its flexibility, rich integrations, and scalability make it an essential tool for modern data-driven organizations.
 
-### 2. What is the Pipeline in ADF?
-In ADF, a pipeline is a logical grouping of activities that work together to perform a specific task.
+### 2. What are the key Components in Azure Data Factory?
+Azure Data Factory (ADF) consists of several key components that help in orchestrating and automating data movement and transformation. Here are the main components:
 
-#### Key Components of an ADF Pipeline:
-- `Activities:` Activities represent the tasks or operations performed in the pipeline, such as copying data, running a transformation, or executing a script.
-- `Linked Services:` Connections to data sources and compute resources.
-- `Datasets:` Represent data structures used as inputs or outputs for activities.
-- `Triggers:` Schedule or invoke pipelines based on time or events.
-- `Parameters:` Enable dynamic and reusable pipeline configurations.
-- `Control Flow:` Orchestrates execution logic like sequencing, conditions, and loops.
+**Pipeline:** 
+- A data factory might have one or more pipelines. A pipeline is a logical grouping of activities that performs a unit of work.
+- For example, a pipeline can contain a group of activities that ingests data from an Azure blob, and then runs a Hive query on an HDInsight cluster to partition the data.
+
+**Activity:**
+- Activities represent a processing step in a pipeline. 
+- For example, you might use a copy activity to copy data from one data store to another data store.
+- Data Factory supports three types of activities: `data movement activities`, `data transformation activities`, and `control activities`.
+
+**Linked services:**
+- Linke services are used to connect other resources to with ADF.
+- Linked services are much like connection strings, which define the connection information that's needed for Data Factory to connect to external resources.
+- For example, an Azure Storage-linked service specifies a connection string to connect to the Azure Storage account.
+- If you want to any type of resource, you need to have connection string which is linked service in ADF.
+
+**Datasets:**
+- Datasets represent data structures within the data stores, which simply point to or reference the data you want to use in your activities as inputs or outputs.
+- It defines the schema and location of the data within a linked service.
+
+**Triggers:**
+- Triggers represent the unit of processing that determines when a pipeline execution needs to be kicked off.
+- There are different types of triggers for different types of events.
+  - `Schedule Trigger:` This type of trigger runs a pipeline based on a predefined schedule (e.g., daily, hourly, at specific intervals). 
+  - `Event-based Trigger:` These triggers execute pipelines in response to specific events, such as blob storage events (e.g., new file creation or deletion).
+  - `Tumbling Window Trigger:` This trigger runs pipelines at a fixed interval, suitable for working with historical data and processing data in time slices. 
+- They allow you to define when and how pipelines should run based on any date time, frequency or based on some event like file creation/deletion providing flexibility in automating data workflows.
+
+**Integration Runtime (IR)**
+- Integration Runtime (IR) is the compute infrastructure used by ADF to perform data Integration activities such as data movement and transformation activities.
+- It acts as the bridge between ADF and the data sources or destinations, enabling connectivity and operational execution.
+- There are three types:
+  - `Azure IR` – Cloud-based, managed by Microsoft.
+  - `Self-hosted IR` – Runs on-premises or on a VM for hybrid/cloud connectivity.
+  - `SSIS IR` – Executes SSIS packages in ADF.
+
+
+### 3. Pipelines and Activities in ADF
+**Pipeline:**
+A data factory might have one or more pipelines. A pipeline is a logical grouping of activities that performs a unit of work.
+For example, a pipeline can contain a group of activities that ingests data from an Azure blob, and then runs a Hive query on an HDInsight cluster to partition the data.
+
+**Activity:**
+Activities represent a processing step in a pipeline. For example, you might use a copy activity to copy data from one data store to another data store.
+
+Data Factory supports three types of activities: `data movement activities`, `data transformation activities`, and `control activities`.
+
+#### 1. Data Movement Activities:
+- `Copy Data Activity` - Moves data from source to destination, supporting over 90+ data stores, including SQL, Blob, ADLS, and external sources like Snowflake and AWS S3. Use Case: Loading data from an on-prem SQL Server to Azure Data Lake.
+
+#### 2. Data Transformation Activities
+- `Mapping Data Flow` - Provides a no-code, GUI-based transformation similar to SSIS, with options like joins, aggregations, and derived columns.
+- `Stored Procedure Activity` -  Calls SQL stored procedures for data processing.
+- `Databricks Activities`:
+  - Notebook Activity – Executes Databricks notebooks for transformation.
+  - Jar Activity – Runs Scala/Java JAR files.
+  - Python Activity – Executes Python scripts in Databricks.
+- `HDInsight Activities:`
+  - Hive, Pig, MapReduce, Spark – Runs big data processing jobs.
+- `Azure Functions:` Runs on Azure Functions compute environment.
+- `U-SQL:` Runs on Azure Data Lake Analytics compute environment.
+
+#### 3. Control Flow Activities (Orchestration)
+Control Flow Activities in ADF help in managing the execution logic of pipelines by controlling the flow between different activities. These activities enable conditional execution, looping, error handling, and external interaction.
+
+- `ForEach Activity` – This activity is used to iterate over a collection and executes specified activities in a loop.
+- `If Condition Activity` – Executes based on a boolean condition.
+- `Filter	Activity` - Apply a filter expression to an input array
+- `Switch Activity` – Routes execution based on an input value.
+- `Wait Activity` – Introduces a delay (useful for dependency management).
+- `Execute Pipeline Activity` – Triggers another ADF pipeline.
+- `Until Activity` – Loops until a condition is met.
+- `Set Variable & Append Variable` – Dynamically sets and appends values.
+- `Get Metadata` - GetMetadata activity can be used to retrieve metadata of any data in a Data Factory or Synapse pipeline.
+- `Append Variable` - Add a value to an existing array variable. 
 
 ### 3. What do you mean by data source in ADF?
 It is the source or destination system which contains data to be used or operate upon.
