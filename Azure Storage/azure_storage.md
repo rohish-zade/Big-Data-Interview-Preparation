@@ -85,12 +85,12 @@ Microsoft Azure Storage offers various data services for storing and accessing d
 - `No storage tiering:` Lacks hot, cool, and archive tiers for cost optimization.
 - `Limited regional availability:` Only available in certain Azure regions.
 - `Higher cost:` Less cost-effective compared to modern alternatives.
-- Retired by Microsoft: No longer recommended for new projects; no future updates planned.
+- `Retired by Microsoft:` No longer recommended for new projects; no future updates planned.
 
 ### 6. What is ADLS Gen2?
 - Azure Data Lake Storage Gen2 is Microsoft’s modern data lake solution built on top of Azure Blob Storage.
-- It combines the scalability, security, and cost-effectiveness of Blob Storage with file system capabilities needed for big data analytics from ADLS Gen1.
 - Combines the best features of Azure Blob Storage and ADLS Gen1.
+- It combines the scalability, security, and cost-effectiveness of Blob Storage with file system capabilities needed for big data analytics from ADLS Gen1.
 
 #### Key Features
 - `Built on Blob Storage:` Fully supports Blob REST APIs along with new Data Lake-specific features.
