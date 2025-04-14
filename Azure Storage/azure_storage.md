@@ -74,7 +74,7 @@ Microsoft Azure Storage offers various data services for storing and accessing d
 
 #### Key Features
 - `Hierarchical namespace:` Supports directories and subdirectories like a traditional file system.
--` Hadoop-compatible:` Natively supports HDFS, allowing easy integration with the Hadoop ecosystem.
+- `Hadoop-compatible:` Natively supports HDFS, allowing easy integration with the Hadoop ecosystem.
 - `POSIX-style access control:` Fine-grained permissions for users and groups (read, write, execute).
 - `High throughput:` Designed for parallel processing of large datasets.
 - `Security-focused:` Data is encrypted at rest and in transit by default.
